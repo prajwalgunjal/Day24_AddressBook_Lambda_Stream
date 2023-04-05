@@ -83,6 +83,20 @@ public class AddressBookMain {
         System.out.println(count+" Person Found!!! which belongs to " +cityname +" city");
         System.out.println(citylist);
     }
+    public void searchByState(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the name of the city which you want to show");
+        String State = sc.next();
+        List<Contact> Statelist = new ArrayList<>();
+        hashMap.values().stream().forEach(addressBook ->{
+            Statelist.addAll(addressBook.getContactBook().
+                    stream().filter(contact ->  contact.getCity().equalsIgnoreCase(State)).collect(Collectors.toList()));
+        });
+        int count = Statelist.size();
+        System.out.println(count+" Person Found!!! which belongs to " +State +" city");
+        System.out.println(Statelist);
+    }
+
 
 
     public static void main(String[] args) {
