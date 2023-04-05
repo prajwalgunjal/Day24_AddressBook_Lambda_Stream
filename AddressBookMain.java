@@ -74,7 +74,7 @@ public class AddressBookMain {
         List<Contact> citylist = new ArrayList<>();
         hashMap.values().stream().forEach(addressBook ->{
             citylist.addAll(addressBook.getContactBook().
-                    stream().filter(contact ->  contact.getCity().equalsIgnoreCase(cityname)).collect(Collectors.toList()));
+                    stream().filter(contact ->  contact.getCity().equalsIgnoreCase(cityname)).sorted(Comparator.comparing(Contact::getCity)).collect(Collectors.toList()));
         });
         int count = citylist.size();
         System.out.println(count+" Person Found!!! which belongs to " +cityname +" city");
@@ -103,7 +103,7 @@ public class AddressBookMain {
         List<Contact> Statelist = new ArrayList<>();
         hashMap.values().stream().forEach(addressBook ->{
             Statelist.addAll(addressBook.getContactBook().
-                    stream().filter(contact ->  contact.getCity().equalsIgnoreCase(State)).collect(Collectors.toList()));
+                    stream().filter(contact ->  contact.getCity().equalsIgnoreCase(State)).sorted(Comparator.comparing(Contact::getState)).collect(Collectors.toList()));
         });
         int count = Statelist.size();
             System.out.println("Total number of contact person");
