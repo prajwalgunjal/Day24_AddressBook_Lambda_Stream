@@ -1,8 +1,5 @@
 package com.bridgelabz.Lambda;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AddressBookMain {
@@ -83,6 +80,16 @@ public class AddressBookMain {
         System.out.println(count+" Person Found!!! which belongs to " +cityname +" city");
         System.out.println(citylist);
     }
+
+
+    public void sort(){
+        List<Contact> citylist = new ArrayList<>();
+        hashMap.values().stream().forEach(addressBook ->{
+            citylist.addAll(addressBook.getContactBook().
+                    stream().sorted(Comparator.comparing(Contact::getFirstName)).collect(Collectors.toList()));
+        });
+        System.out.println(citylist);
+    }
     public void searchByState(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Press 1 to search person by using name of the city ");
@@ -117,7 +124,9 @@ public class AddressBookMain {
             System.out.println("6) press 6 to Display all AddressBook");
             System.out.println("7) press 7 to Exit");
             System.out.println("8) press 8 to Display all the contact from specified city ");
-            System.out.println("9) press 8 to Display all the contact from specified State ");
+            System.out.println("9) press 9 to Display all the contact from specified State ");
+            System.out.println("10) press 10 to Display all the contact in sorted order ");
+
             int input = sc.nextInt();
             switch (input){
                 case 1 -> {
@@ -146,6 +155,8 @@ public class AddressBookMain {
                     addressBookMain.searchBycity();
                 }case 9 -> {
                     addressBookMain.searchByState();
+                }case 10 -> {
+                    addressBookMain.sort();
                 }
             }
         }
