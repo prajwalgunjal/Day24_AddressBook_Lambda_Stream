@@ -99,6 +99,7 @@ public class AddressBookMain {
                     stream().filter(contact ->  contact.getCity().equalsIgnoreCase(State)).collect(Collectors.toList()));
         });
         int count = Statelist.size();
+            System.out.println("Total number of contact person");
         System.out.println(count+" Person Found!!! which belongs to " +State +" city");
         System.out.println(Statelist);
     }
