@@ -21,6 +21,7 @@ public class AddressBookMain {
         if(hashMap.isEmpty())
         {
             System.out.println("Your address book is empty first please add new Addressbook");
+            System.out.println();
             AddAddressbook();
         }
         Scanner sc = new Scanner(System.in);
