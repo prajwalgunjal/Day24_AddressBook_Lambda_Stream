@@ -85,6 +85,12 @@ public class AddressBookMain {
     }
     public void searchByState(){
         Scanner sc = new Scanner(System.in);
+        System.out.println("Press 1 to search person by using name of the city ");
+        System.out.println("Press 2 to search person by using name of the city ");
+        int num =sc.nextInt();
+        if(num==1){
+            searchBycity();
+        }else {
         System.out.println("Enter the name of the city which you want to show");
         String State = sc.next();
         List<Contact> Statelist = new ArrayList<>();
@@ -96,9 +102,7 @@ public class AddressBookMain {
         System.out.println(count+" Person Found!!! which belongs to " +State +" city");
         System.out.println(Statelist);
     }
-
-
-
+    }
     public static void main(String[] args) {
         AddressBookMain addressBookMain = new AddressBookMain();
         Scanner sc = new Scanner(System.in);
@@ -112,6 +116,7 @@ public class AddressBookMain {
             System.out.println("6) press 6 to Display all AddressBook");
             System.out.println("7) press 7 to Exit");
             System.out.println("8) press 8 to Display all the contact from specified city ");
+            System.out.println("9) press 8 to Display all the contact from specified State ");
             int input = sc.nextInt();
             switch (input){
                 case 1 -> {
@@ -138,6 +143,8 @@ public class AddressBookMain {
                 }
                 case 8 -> {
                     addressBookMain.searchBycity();
+                }case 9 -> {
+                    addressBookMain.searchByState();
                 }
             }
         }
