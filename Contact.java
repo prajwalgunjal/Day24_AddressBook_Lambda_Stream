@@ -1,5 +1,4 @@
 package com.bridgelabz.Lambda;
-
 public class Contact {
     private String FirstName;
     private String LastName;

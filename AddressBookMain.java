@@ -1,6 +1,10 @@
 package com.bridgelabz.Lambda;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
 public class AddressBookMain {
     HashMap<String ,AddressBook> hashMap = new HashMap<String,AddressBook>();
     public void AddAddressbook(){
@@ -21,7 +25,6 @@ public class AddressBookMain {
         if(hashMap.isEmpty())
         {
             System.out.println("Your address book is empty first please add new Addressbook");
-            System.out.println();
             AddAddressbook();
         }
         Scanner sc = new Scanner(System.in);
@@ -67,6 +70,20 @@ public class AddressBookMain {
             System.out.println(hashMap);
         }
     }
+    public void searchBycity(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the name of the city which you want to show");
+        String cityname = sc.next();
+        List<Contact> citylist = new ArrayList<>();
+        hashMap.values().stream().forEach(addressBook ->{
+            citylist.addAll(addressBook.getContactBook().
+                    stream().filter(contact ->  contact.getCity().equalsIgnoreCase(cityname)).collect(Collectors.toList()));
+        });
+        int count = citylist.size();
+        System.out.println(count+" Person Found!!! which belongs to " +cityname +" city");
+        System.out.println(citylist);
+    }
+
 
     public static void main(String[] args) {
         AddressBookMain addressBookMain = new AddressBookMain();
@@ -79,7 +96,8 @@ public class AddressBookMain {
             System.out.println("4) press 4 to Delete contact");
             System.out.println("5) press 5 to Add AddressBook");
             System.out.println("6) press 6 to Display all AddressBook");
-            System.out.println("7) press 5 to Exit");
+            System.out.println("7) press 7 to Exit");
+            System.out.println("8) press 8 to Display all the contact from specified city ");
             int input = sc.nextInt();
             switch (input){
                 case 1 -> {
@@ -103,6 +121,9 @@ public class AddressBookMain {
                 }
                 case 6 -> {
                     addressBookMain.displayAllAddressbook();
+                }
+                case 8 -> {
+                    addressBookMain.searchBycity();
                 }
             }
         }

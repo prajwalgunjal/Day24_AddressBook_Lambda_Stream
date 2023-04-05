@@ -13,6 +13,15 @@ public class AddressBook {
     }
 
     ArrayList<Contact> contactBook = new ArrayList<>();
+
+    public ArrayList<Contact> getContactBook() {
+        return contactBook;
+    }
+
+    public void setContactBook(ArrayList<Contact> contactBook) {
+        this.contactBook = contactBook;
+    }
+
     public void AddContact(){
         Scanner sc = new Scanner(System.in);
         Contact contact = new Contact();
